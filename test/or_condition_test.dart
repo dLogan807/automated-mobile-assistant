@@ -1,13 +1,13 @@
-import 'package:automated_mobile_assistant/and_condition.dart';
+import 'package:automated_mobile_assistant/or_condition.dart';
 import 'package:automated_mobile_assistant/condition.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('And Condition', () {
+  group('Or Condition', () {
     test('condition should be met if there are no conditions', () {
       List<Condition> list = [];
 
-      AndCondition andCondition = AndCondition(false, false, list);
+      OrCondition andCondition = OrCondition(false, false, list);
 
       expect(andCondition.isMet(), true);
     });
@@ -15,7 +15,7 @@ void main() {
     test('inverting should invert result', () {
       List<Condition> list = [];
 
-      AndCondition andCondition = AndCondition(true, false, list);
+      OrCondition andCondition = OrCondition(true, false, list);
 
       expect(andCondition.isMet(), false);
     });
