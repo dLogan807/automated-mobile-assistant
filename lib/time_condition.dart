@@ -1,10 +1,10 @@
 import 'condition.dart';
 
 class TimeCondition extends Condition {
-  DateTime time;
+  DateTime setTime;
 
   //Constructor
-  TimeCondition(super.inverted, super.disabled, this.time);
+  TimeCondition(super.inverted, super.disabled, this.setTime);
 
   //If condition's time is the same as the current time
   @override
@@ -16,12 +16,11 @@ class TimeCondition extends Condition {
     returnValue = _areSameTime(currentTime);
 
     if (inverted) {
-      returnValue = !returnValue;
+      return !returnValue;
     }
-
     return returnValue;
   }
 
   //If the passed time is the same as the stored time
-  bool _areSameTime(DateTime otherTime) => (time.hour == otherTime.hour && time.minute == otherTime.minute);
+  bool _areSameTime(DateTime otherTime) => (setTime.hour == otherTime.hour && setTime.minute == otherTime.minute);
 }

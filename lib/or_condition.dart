@@ -19,9 +19,8 @@ class OrCondition extends Condition {
     }
 
     if (inverted) {
-      returnValue = !returnValue;
+      return !returnValue;
     }
-
     return returnValue;
   }
 }
