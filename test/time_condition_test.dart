@@ -1,5 +1,4 @@
 import 'package:automated_mobile_assistant/time_condition.dart';
-import 'package:automated_mobile_assistant/condition.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,41 +1,35 @@
-import 'package:automated_mobile_assistant/time_condition.dart';
-import 'package:automated_mobile_assistant/condition.dart';
+import 'package:automated_mobile_assistant/location_condition.dart';
 import 'package:test/test.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
-  group('Time Condition', () {
-    test('two times should be the same if they have the same minute and hour', () {
-      DateTime setTime = DateTime.now();
+  group('Location Condition', () {
+    test('Should return false if location could not be determined', () async {
+      Position setPosition = Position(longitude: 1, latitude: 1, timestamp: DateTime.now(), accuracy: 1, altitude: 1, altitudeAccuracy: 1, heading: 1, headingAccuracy: 1, speed: 1, speedAccuracy: 1);
+      
+      LocationCondition locationCondition = LocationCondition(false, false, setPosition);
 
-      TimeCondition timeCondition = TimeCondition(false, false, setTime);
+      bool isMetValue = await locationCondition.isMetAsync();
 
-      expect(timeCondition.isMet(), true);
+      expect(isMetValue, false);
     });
 
-    test('two times should NOT be the same if they do not have the same hour', () {
-      DateTime setTime = DateTime.now();
-      setTime = setTime.add(const Duration(hours: 1));
+    test('Should throw error if non async implementation used', () {
+      Position setPosition = Position(longitude: 1, latitude: 1, timestamp: DateTime.now(), accuracy: 1, altitude: 1, altitudeAccuracy: 1, heading: 1, headingAccuracy: 1, speed: 1, speedAccuracy: 1);
 
-      TimeCondition timeCondition = TimeCondition(false, false, setTime);
+      LocationCondition locationCondition = LocationCondition(false, false, setPosition);
 
-      expect(timeCondition.isMet(), false);
+      expect(locationCondition.isMet, throwsUnsupportedError);
     });
 
-    test('two times should NOT be the same if they do not have the same minute', () {
-      DateTime setTime = DateTime.now();
-      setTime = setTime.add(const Duration(minutes: 1));
+    test('Should invert result if inverted', () async {
+      Position setPosition = Position(longitude: 1, latitude: 1, timestamp: DateTime.now(), accuracy: 1, altitude: 1, altitudeAccuracy: 1, heading: 1, headingAccuracy: 1, speed: 1, speedAccuracy: 1);
 
-      TimeCondition timeCondition = TimeCondition(false, false, setTime);
+      LocationCondition locationCondition = LocationCondition(true, false, setPosition);
 
-      expect(timeCondition.isMet(), false);
-    });
+      bool isMetValue = await locationCondition.isMetAsync();
 
-    test('inverting should invert result', () {
-      DateTime setTime = DateTime.now();
-
-      TimeCondition timeCondition = TimeCondition(true, false, setTime);
-
-      expect(timeCondition.isMet(), false);
+      expect(isMetValue, true);
     });
   });
 }
