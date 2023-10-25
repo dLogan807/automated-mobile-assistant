@@ -1,4 +1,4 @@
-import 'Condition.dart';
+import 'condition.dart';
 
 class TimeCondition extends Condition {
   DateTime time;

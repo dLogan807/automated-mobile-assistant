@@ -1,4 +1,4 @@
-import 'Condition.dart';
+import 'condition.dart';
 
 class OrCondition extends Condition {
   List<Condition> conditions;
