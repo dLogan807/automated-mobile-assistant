@@ -6,6 +6,7 @@ class LocationCondition extends Condition {
 
   LocationCondition(super.inverted, super.disabled, this.setPosition);
 
+  //A location request must be async
   @override
   bool isMet() {
     throw UnsupportedError("Implementation is async");
