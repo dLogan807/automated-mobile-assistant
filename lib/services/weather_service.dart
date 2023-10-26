@@ -1,18 +1,17 @@
 import 'dart:convert';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../models/weather_model.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherService {
   static const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
-  late String apiKey;
+  final String apiKey = dotenv.env['OPEN_WEATHER_API_KEY']!;
 
   //Singleton initialisation
   static final WeatherService _instance = WeatherService._internal();
 
   //Return singleton instance of LocationService
-  factory WeatherService(String apiKey) {
-    _instance.apiKey = apiKey;
+  factory WeatherService() {
     return _instance;
   }
 
