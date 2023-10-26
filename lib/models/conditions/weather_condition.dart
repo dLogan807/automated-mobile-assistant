@@ -1,20 +1,36 @@
-import 'dart:convert';
+import '../weather_model.dart';
+import 'package:automated_mobile_assistant/services/weather_service.dart';
 
 import 'condition.dart';
 
 class WeatherCondition extends Condition {
-  late string weatherType;
+  late String weatherType;
 
   //Constructor
   WeatherCondition(super.inverted, super.disabled) {
     weatherType = 'clear sky';
   }
 
-  //If condition's time is the same as the current time
+  //A weather request must be async
   @override
   bool isMet() {
-    bool returnValue;
+    throw UnsupportedError("Implementation is async");
+  }
 
+  //If current weather is the same as the specified weather
+  Future<bool> isMetAsync() async {
+    bool returnValue = false;
+
+    WeatherService weatherService = WeatherService();
+
+    try {
+      Weather currentWeather = await weatherService.getCurrentWeather();
+
+      if (currentWeather.mainCondition == weatherType) {
+        returnValue = true;
+      }
+    }
+    catch (e) {}
 
     if (inverted) {
       return !returnValue;
