@@ -1,31 +1,26 @@
-import 'package:automated_mobile_assistant/days_condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/days_condition.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Days Condition', () {
     test('should not be met if the current day is disabled', () {
-      List<bool> days = [false, false, false, false, false, false, false];
+      DaysCondition daysCondition = Condition.type(false, false, ConditionType.days) as DaysCondition;
 
-      DaysCondition timeCondition = DaysCondition(false, false, days);
-
-      expect(timeCondition.isMet(), false);
+      expect(daysCondition.isMet(), false);
     });
 
     test('should be met if the current day is enabled', () {
-      List<bool> days = [false, false, false, false, false, false, false];
-      days.insert(DateTime.now().weekday - 1, true);
+      DaysCondition daysCondition = Condition.type(false, false, ConditionType.days) as DaysCondition;
+      daysCondition.days.insert(DateTime.now().weekday - 1, true);
 
-      DaysCondition timeCondition = DaysCondition(false, false, days);
-
-      expect(timeCondition.isMet(), true);
+      expect(daysCondition.isMet(), true);
     });
 
     test('inverting should invert result', () {
-      List<bool> days = [false, false, false, false, false, false, false];
+      DaysCondition daysCondition = Condition.type(true, false, ConditionType.days) as DaysCondition;
 
-      DaysCondition timeCondition = DaysCondition(true, false, days);
-
-      expect(timeCondition.isMet(), true);
+      expect(daysCondition.isMet(), true);
     });
   });
 }

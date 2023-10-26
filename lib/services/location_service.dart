@@ -1,48 +1,23 @@
-import 'package:automated_mobile_assistant/condition.dart';
 import 'package:geolocator/geolocator.dart';
 
-class LocationCondition extends Condition {
-  Position setPosition;
+class LocationService {
+  //Singleton initialisation
+  static final LocationService _instance = LocationService._internal();
 
-  LocationCondition(super.inverted, super.disabled, this.setPosition);
-
-  //A location request must be async
-  @override
-  bool isMet() {
-    throw UnsupportedError("Implementation is async");
+  //Return singleton instance of LocationService
+  factory LocationService() {
+    return _instance;
   }
 
-  //Return true if the specified location and the current location are < 100m apart
-  Future<bool> isMetAsync() async {
-    bool returnValue = false;
-    bool error = false;
-    Position currentPosition;
-
-    try {
-      currentPosition =  await _determinePosition();
-      double distance = Geolocator.distanceBetween(setPosition.latitude, setPosition.longitude, currentPosition.latitude, currentPosition.longitude);
-
-      if (distance < 100) {
-        returnValue = true;
-      }
-    }
-    catch (e) {
-     //Will return false if there's an error
-    }
-
-    if (inverted) {
-      return !returnValue;
-    }
-    return returnValue;
-  }
+  //Constructor - called once only
+  LocationService._internal();
 
   //Below code is sourced from https://pub.dev/packages/geolocator
-
   /// Determine the current position of the device.
   ///
   /// When the location services are not enabled or permissions
   /// are denied the `Future` will return an error.
-  Future<Position> _determinePosition() async {
+  Future<Position> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 

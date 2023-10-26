@@ -1,10 +1,12 @@
 import 'condition.dart';
 
 class DaysCondition extends Condition {
-  List<bool> days;
+  late List<bool> days;
 
   //Constructor
-  DaysCondition(super.inverted, super.disabled, this.days);
+  DaysCondition(super.inverted, super.disabled) {
+    days = [false, false, false, false, false, false, false];
+  }
 
   //If the current day is enabled, return true
   @override

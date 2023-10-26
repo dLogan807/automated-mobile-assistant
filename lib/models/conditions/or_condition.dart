@@ -1,19 +1,21 @@
 import 'condition.dart';
 
-class AndCondition extends Condition {
-  List<Condition> conditions;
+class OrCondition extends Condition {
+  late List<Condition> conditions;
 
   //Constructor
-  AndCondition(super.inverted, super.disabled, this.conditions);
+  OrCondition(super.inverted, super.disabled) {
+    conditions = [];
+  }
 
-  //If any sub-condition is false
+  //If any sub-condition is true
   @override
   bool isMet() {
     bool returnValue = true;
 
     for (Condition condition in conditions) {
-      if (!condition.isMet()) {
-        returnValue = false;
+      if (condition.isMet()) {
+        returnValue = true;
         break;
       }
     }
