@@ -1,10 +1,12 @@
 import 'condition.dart';
 
 class OrCondition extends Condition {
-  List<Condition> conditions;
+  late List<Condition> conditions;
 
   //Constructor
-  OrCondition(super.inverted, super.disabled, this.conditions);
+  OrCondition(super.inverted, super.disabled) {
+    conditions = [];
+  }
 
   //If any sub-condition is true
   @override

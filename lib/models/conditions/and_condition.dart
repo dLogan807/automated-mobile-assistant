@@ -1,10 +1,12 @@
 import 'condition.dart';
 
 class AndCondition extends Condition {
-  List<Condition> conditions;
+  late List<Condition> conditions;
 
   //Constructor
-  AndCondition(super.inverted, super.disabled, this.conditions);
+  AndCondition(super.inverted, super.disabled) {
+    conditions = [];
+  }
 
   //If any sub-condition is false
   @override

@@ -2,9 +2,9 @@ import 'condition.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationCondition extends Condition {
-  Position setPosition;
+  Position? position;
 
-  LocationCondition(super.inverted, super.disabled, this.setPosition);
+  LocationCondition(super.inverted, super.disabled);
 
   //A location request must be async
   @override
@@ -19,11 +19,15 @@ class LocationCondition extends Condition {
     Position currentPosition;
 
     try {
-      currentPosition =  await _determinePosition();
-      double distance = Geolocator.distanceBetween(setPosition.latitude, setPosition.longitude, currentPosition.latitude, currentPosition.longitude);
+      if (positionIsSet()) {
+        currentPosition = await _determinePosition();
+        double distance = Geolocator.distanceBetween(
+            position!.latitude, position!.longitude, currentPosition.latitude,
+            currentPosition.longitude);
 
-      if (distance < 100) {
-        returnValue = true;
+        if (distance < 100) {
+          returnValue = true;
+        }
       }
     }
     catch (e) {
@@ -34,6 +38,11 @@ class LocationCondition extends Condition {
       return !returnValue;
     }
     return returnValue;
+  }
+
+  //Check if the base position had been set yet
+  bool positionIsSet() {
+    return (position != null && position?.latitude != null && position?.longitude != null);
   }
 
   //Below code is sourced from https://pub.dev/packages/geolocator
