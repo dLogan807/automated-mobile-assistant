@@ -7,7 +7,7 @@ import 'package:geolocator/geolocator.dart';
 void main() {
   group('Weather Condition', () {
     test('Should return false if weather could not be determined', () async {
-      await dotenv.load(fileName: ".env");
+      dotenv.testLoad(fileInput: '''OPEN_WEATHER_API_KEY=12345abc''');
 
       WeatherCondition weatherCondition = Condition.type(false, false, ConditionType.weather) as WeatherCondition;
 
@@ -17,14 +17,14 @@ void main() {
     });
 
     test('Should throw error if non async implementation used', () async {
-      await dotenv.load(fileName: ".env");
+      dotenv.testLoad(fileInput: '''OPEN_WEATHER_API_KEY=12345abc''');
       WeatherCondition weatherCondition = Condition.type(false, false, ConditionType.weather) as WeatherCondition;
 
       expect(weatherCondition.isMet, throwsUnsupportedError);
     });
 
     test('Should invert result if inverted', () async {
-      await dotenv.load(fileName: ".env");
+      dotenv.testLoad(fileInput: '''OPEN_WEATHER_API_KEY=12345abc''');
       WeatherCondition weatherCondition = Condition.type(true, false, ConditionType.weather) as WeatherCondition;
 
       bool isMetValue = await weatherCondition.isMetAsync();
