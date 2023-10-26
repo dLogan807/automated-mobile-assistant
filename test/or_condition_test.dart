@@ -5,17 +5,13 @@ import 'package:test/test.dart';
 void main() {
   group('Or Condition', () {
     test('condition should be met if there are no conditions', () {
-      List<Condition> list = [];
-
-      OrCondition andCondition = OrCondition(false, false, list);
+      OrCondition andCondition = OrCondition(false, false);
 
       expect(andCondition.isMet(), true);
     });
 
     test('inverting should invert result', () {
-      List<Condition> list = [];
-
-      OrCondition andCondition = OrCondition(true, false, list);
+      OrCondition andCondition = OrCondition(true, false);
 
       expect(andCondition.isMet(), false);
     });
