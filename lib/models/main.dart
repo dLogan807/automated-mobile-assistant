@@ -1,54 +1,35 @@
+import 'package:automated_mobile_assistant/blocs/tasks/tasks_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:automated_mobile_assistant/screens/home_screen.dart';
 
-void main() => runApp(MaterialApp(
-  //theme: ThemeData(useMaterial3: true),
-  home: Home(),
-));
+void main() => runApp(
+  const MyApp(),
+);
 
-class Home extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tasks'),
-        centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
-      ),
-      drawer: Drawer(),
-      body: Tasks(),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text('New Task'),
-        icon: const Icon(Icons.add),
-        backgroundColor: Colors.deepPurple,
-      ),
-    );
-  }
-}
-
-class Tasks extends StatefulWidget {
-  const Tasks({super.key});
-
-  @override
-  State<Tasks> createState() => _TasksState();
-}
-
-class _TasksState extends State<Tasks> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(30.0),
-          color: Colors.deepPurple[50],
-          child: Text('Task 1'),
-        ),
-        Container(
-          padding: EdgeInsets.all(30.0),
-          color: Colors.deepPurple[50],
-          child: Text('Task 1'),
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => TasksBloc()
+          ..add(
+              LoadTasks(),
+          ),),
       ],
+      child: MaterialApp(
+        title: 'Tasks',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          primaryColor: Colors.deepPurple,
+          appBarTheme: const AppBarTheme(
+            color: Colors.deepPurpleAccent,
+          ),
+        ),
+        home: const HomeScreen(),
+      ),
     );
   }
 }

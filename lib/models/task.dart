@@ -1,11 +1,11 @@
 import 'conditions/condition.dart';
 
 class Task {
+  int id;
   String name;
-  String? description;
   bool disabled;
 
   List<Condition> conditions;
 
-  Task(this.name, this.description, this.disabled, this.conditions);
+  Task(this.id, this.name, this.disabled, this.conditions);
 }
