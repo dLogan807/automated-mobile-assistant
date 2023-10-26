@@ -5,6 +5,14 @@ on:
       - main
 
 jobs:
+  create_temp_env:
+    name: Create a blank .env for testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: 1arp/create-a-file-action@0.3
+        with:
+          file: '.env'
   flutter_test:
     name: Run flutter test and analyze
     runs-on: ubuntu-latest
