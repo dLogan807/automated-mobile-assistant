@@ -1,8 +1,10 @@
 import 'package:automated_mobile_assistant/models/conditions/and_condition.dart';
 import 'package:automated_mobile_assistant/models/conditions/days_condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/temperature_condition.dart';
 import 'package:automated_mobile_assistant/models/conditions/time_condition.dart';
 import 'package:automated_mobile_assistant/models/conditions/or_condition.dart';
 import 'package:automated_mobile_assistant/models/conditions/location_condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/weather_condition.dart';
 
 abstract class Condition {
   bool inverted;
@@ -12,7 +14,7 @@ abstract class Condition {
   Condition(this.inverted, this.disabled);
 
   //Condition factory
-  factory Condition.time(bool inverted, bool disabled, ConditionType type) {
+  factory Condition.type(bool inverted, bool disabled, ConditionType type) {
     switch (type) {
       case ConditionType.time:
         return TimeCondition(inverted, disabled);
@@ -24,6 +26,10 @@ abstract class Condition {
         return AndCondition(inverted, disabled);
       case ConditionType.or:
         return OrCondition(inverted, disabled);
+      case ConditionType.weather:
+        return WeatherCondition(inverted, disabled);
+      case ConditionType.temperature:
+        return TemperatureCondition(inverted, disabled);
       default:
         throw UnimplementedError("Condition type does not exist!");
     }
@@ -40,4 +46,6 @@ enum ConditionType {
   location,
   and,
   or,
+  weather,
+  temperature,
 }

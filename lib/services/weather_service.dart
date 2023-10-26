@@ -7,7 +7,7 @@ import 'package:geolocator/geolocator.dart';
 
 class WeatherService {
   static const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
-  final String apiKey = dotenv.env['OPEN_WEATHER_API_KEY']!;
+  final String? apiKey = dotenv.env['OPEN_WEATHER_API_KEY'];
 
   //Singleton initialisation
   static final WeatherService _instance = WeatherService._internal();
@@ -22,6 +22,10 @@ class WeatherService {
 
   //Get the weather at the current location
   Future<Weather> getCurrentWeather() async {
+    if (apiKey == null) {
+      throw ArgumentError("Implementation is async");
+    }
+
     LocationService locationService = LocationService();
     try {
       Position currentPosition = await locationService.determinePosition();
