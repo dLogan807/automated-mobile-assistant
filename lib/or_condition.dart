@@ -11,7 +11,7 @@ class OrCondition extends Condition {
   bool isMet() {
     bool returnValue = true;
 
-    for (var condition in conditions) {
+    for (Condition condition in conditions) {
       if (condition.isMet()) {
         returnValue = true;
         break;
@@ -19,9 +19,8 @@ class OrCondition extends Condition {
     }
 
     if (inverted) {
-      returnValue = !returnValue;
+      return !returnValue;
     }
-
     return returnValue;
   }
 }

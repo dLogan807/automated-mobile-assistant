@@ -11,7 +11,7 @@ class AndCondition extends Condition {
   bool isMet() {
     bool returnValue = true;
 
-    for (var condition in conditions) {
+    for (Condition condition in conditions) {
       if (!condition.isMet()) {
         returnValue = false;
         break;
@@ -19,9 +19,8 @@ class AndCondition extends Condition {
     }
 
     if (inverted) {
-      returnValue = !returnValue;
+      return !returnValue;
     }
-
     return returnValue;
   }
 }
