@@ -1,4 +1,4 @@
-import 'package:automated_mobile_assistant/models/time_condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/time_condition.dart';
 import 'package:test/test.dart';
 
 void main() {

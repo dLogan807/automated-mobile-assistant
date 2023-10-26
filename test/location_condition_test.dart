@@ -1,4 +1,4 @@
-import 'package:automated_mobile_assistant/models/location_condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/location_condition.dart';
 import 'package:test/test.dart';
 import 'package:geolocator/geolocator.dart';
 

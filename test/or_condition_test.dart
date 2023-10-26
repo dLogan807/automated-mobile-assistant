@@ -1,5 +1,5 @@
-import 'package:automated_mobile_assistant/models/or_condition.dart';
-import 'package:automated_mobile_assistant/models/condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/or_condition.dart';
+import 'package:automated_mobile_assistant/models/conditions/condition.dart';
 import 'package:test/test.dart';
 
 void main() {
