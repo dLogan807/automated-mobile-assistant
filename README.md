@@ -12,5 +12,5 @@ Currently, the app is not in a state in which it can be used on a device. Howeve
 
 2. Clone the project to a local directory or download its zip.
 
-3. Add a .env file to the project's root directory and add your Open Weather Api key inbetween the apostrophes. You can generate an api key by creating an account [here](https://home.openweathermap.org/users/sign_up).  
+3. Add a .env file to the project's root directory and add your Open Weather Api key for the variable shown below. You can generate an api key by creating an account [here](https://home.openweathermap.org/users/sign_up).  
 ![.env sample](https://github.com/dLogan807/automated-mobile-assistant/blob/main/env_sample.png?raw=true)
