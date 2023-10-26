@@ -1,4 +1,4 @@
-import 'package:automated_mobile_assistant/days_condition.dart';
+import 'package:automated_mobile_assistant/models/days_condition.dart';
 import 'package:test/test.dart';
 
 void main() {

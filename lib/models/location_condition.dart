@@ -1,4 +1,4 @@
-import 'package:automated_mobile_assistant/condition.dart';
+import 'condition.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationCondition extends Condition {
