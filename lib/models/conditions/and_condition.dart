@@ -8,15 +8,29 @@ class AndCondition extends Condition {
     conditions = [];
   }
 
-  //If any sub-condition is false
+  //An And condition must be async to account for async conditions
   @override
   bool isMet() {
+    throw throw UnsupportedError("Implementation is async");
+  }
+
+  //If any sub-condition is false
+  @override
+  Future<bool> isMetAsync() async {
     bool returnValue = true;
 
     for (Condition condition in conditions) {
-      if (!condition.isMet()) {
-        returnValue = false;
-        break;
+      try {
+        if (!condition.isMet()) {
+          returnValue = false;
+          break;
+        }
+      }
+      on UnsupportedError catch (e) {
+        if (!(await condition.isMetAsync())) {
+          returnValue = false;
+          break;
+        }
       }
     }
 

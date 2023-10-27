@@ -27,4 +27,10 @@ class DaysCondition extends Condition {
     }
     return returnValue;
   }
+
+  //Async is not required
+  @override
+  Future<bool> isMetAsync() {
+    throw throw UnsupportedError("Implementation is not async");
+  }
 }

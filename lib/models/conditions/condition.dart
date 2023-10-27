@@ -37,6 +37,8 @@ abstract class Condition {
 
   //If the condition is met
   bool isMet();
+
+  Future<bool> isMetAsync();
 }
 
 //Enum of condition types

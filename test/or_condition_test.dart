@@ -4,16 +4,16 @@ import 'package:test/test.dart';
 
 void main() {
   group('Or Condition', () {
-    test('condition should be met if there are no conditions', () {
+    test('condition should be met if there are no conditions', () async {
       OrCondition orCondition = Condition.type(false, false, ConditionType.or) as OrCondition;
 
-      expect(orCondition.isMet(), true);
+      expect(await orCondition.isMetAsync(), true);
     });
 
-    test('inverting should invert result', () {
+    test('inverting should invert result', () async {
       OrCondition orCondition = Condition.type(true, false, ConditionType.or) as OrCondition;
 
-      expect(orCondition.isMet(), false);
+      expect(await orCondition.isMetAsync(), false);
     });
   });
 }

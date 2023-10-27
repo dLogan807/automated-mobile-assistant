@@ -25,4 +25,10 @@ class TimeCondition extends Condition {
 
   //If the passed time is the same as the stored time
   bool _areSameTime(DateTime otherTime) => (time.hour == otherTime.hour && time.minute == otherTime.minute);
+
+  //Async is not required
+  @override
+  Future<bool> isMetAsync() {
+    throw throw UnsupportedError("Implementation is not async");
+  }
 }
