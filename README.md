@@ -17,7 +17,7 @@ Several Flutter packages are also required for code functionality:
 
 ## Development Setup
 
-Currently, the app is not in a state in which it can be used on a device. However, it may be configured for development by following these steps:
+Currently, the app is not in a state in which it can be used on a mobile device. However, it may be configured for development by following these steps:
 
 1. Follow this [tutorial](https://www.youtube.com/watch?v=VFDbZk2xhO4) to install Flutter and Android Studio. The use of other editors, such as Visual Studio Code, is up to personal preference. 
 
