@@ -15,6 +15,7 @@ class LocationCondition extends Condition {
   }
 
   //Return true if the specified location and the current location are < 100m apart
+  @override
   Future<bool> isMetAsync() async {
     bool returnValue = false;
     bool error = false;

@@ -18,6 +18,7 @@ class WeatherCondition extends Condition {
   }
 
   //If current weather is the same as the specified weather
+  @override
   Future<bool> isMetAsync() async {
     bool returnValue = false;
 
