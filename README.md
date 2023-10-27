@@ -2,7 +2,18 @@
 
 ## Introduction
 
-Automated Mobile Assistant is an Android and iOS app being developed using Flutter. Its purpose is to automatically generate suggested automated tasks based off of the user's activity, assisting them in automating tasks of their everyday life that they choose. It aims to do this transparently, with the user's privacy at its forefront but  without compromising ease-of-use.
+Automated Mobile Assistant is an Android and iOS app being developed using Flutter. Its purpose is to automatically generate suggested automated tasks based off the user's activity, assisting them in automating tasks of their everyday life that they choose. It aims to do this transparently, with the user's privacy at its forefront but without compromising ease-of-use.
+
+## Dependencies
+
+Dart is the main development language (Android and iOS have not been individually targeted yet).  
+Several Flutter packages are also required for code functionality:
+- [geolocator](https://pub.dev/packages/geolocator)
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [equatable](https://pub.dev/packages/equatable)
+- [http](https://pub.dev/packages/http)
+- [geocoding](https://pub.dev/packages/geocoding)
+- [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)
 
 ## Development Setup
 
